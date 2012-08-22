@@ -9,3 +9,9 @@ trigger "test_trigger_2" do
   on    :tuesday
   every :hours=>2, :minutes=>10
 end
+
+trigger "test_trigger_3" do
+  runs  { "hello world 3" }
+  monthly_on 15
+  at :hours=>2, :minutes=>10
+end

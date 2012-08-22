@@ -1,4 +1,4 @@
-%w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
+%w[rubygems rake rake/clean fileutils newgem rubigen rake/testtask].each { |f| require f }
 require File.dirname(__FILE__) + '/lib/chrono_trigger'
 
 ## Generate all the Rake tasks
@@ -28,6 +28,12 @@ require File.dirname(__FILE__) + '/lib/chrono_trigger'
 # # TODO - want other tests/tasks run by default? Add them to the list
 # task :default => [:spec, :features]
 
+Rake::TestTask.new do |t|
+  t.libs << 'test'
+end
+
+desc "Run tests"
+task :default => :test
 
 begin
   require 'jeweler'

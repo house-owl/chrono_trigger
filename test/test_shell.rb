@@ -40,11 +40,11 @@ class TestShell < Test::Unit::TestCase
     
     context "calling load_context with a valid trigger file" do
       setup do
-        @shell.load_triggers("test/triggers.rb")
+        @shell.load_triggers(["test/triggers.rb"])
       end
       
-      should "create 2 triggers" do
-        assert_equal 2, @shell.triggers.size
+      should "create 3 triggers" do
+        assert_equal 3, @shell.triggers.size
       end
     end #calling load_context with a valid trigger file
   end #A shell instance, @shell

@@ -106,7 +106,69 @@ class TestCronEntry < Test::Unit::TestCase
         end
       end #and no minutes_entry
     end #with a day entry
-
+    
+    context "with a calendar_day entry of 25" do
+      setup do
+        @cron.set_calendar_days(25)
+      end
+      
+      should "raise an exception when setting a calendar_day and no hour and minutes" do
+        assert_raise ChronoTrigger::ConfigurationException do
+           @cron.matches?(time_from_options(:day => 25))
+        end
+      end
+      
+      context "with a hour entry of 10" do
+        setup do
+          @cron.set_hours(10)
+        end
+        
+        should "raise an exception when setting a calendar_day and hour but no minutes" do
+          assert_raise ChronoTrigger::ConfigurationException do
+             @cron.matches?(time_from_options(:hour=> 10, :day => 25))
+          end
+        end
+      
+        context "with a minutes entry of 5" do
+          setup do
+            @cron.set_minutes(5)
+          end
+          
+          should_match(:minutes => 5, :hour => 10, :day => 25)
+          should_not_match(:minutes => 4, :hour => 10, :day => 25)
+          should_not_match(:minutes => 5, :hour => 11, :day => 25)
+          should_not_match(:minutes => 5, :hour => 10, :day => 26)
+          
+          context "with an additional calendar_day entry of 26" do
+            setup do
+              @cron.set_calendar_days([25, 26])
+            end
+            
+            should_match(:minutes => 5, :hour => 10, :day => 25)
+            should_match(:minutes => 5, :hour => 10, :day => 26)
+            
+            should "raise an exception when setting a calendar_day is outside the acceptable range" do
+              assert_raise ChronoTrigger::ConfigurationException do
+                @cron.set_calendar_days(-1)
+              end
+            end
+          end
+          
+          context "with a day entry of tuesday" do
+            setup do
+              @cron.set_days(:wednesday)
+            end
+            
+            should "raise an exception when setting a calendar_day with a day" do
+              assert_raise ChronoTrigger::ConfigurationException do
+                @cron.matches?(time_from_options(:minutes => 5, :hour => 10, :day => 25, :wday => 3))
+              end
+            end
+          end
+        end
+      end
+    end
+        
     should "raise an exception when setting an hour entry greater than 25" do
       assert_raise ChronoTrigger::ConfigurationException do
         @cron.set_hours(25)

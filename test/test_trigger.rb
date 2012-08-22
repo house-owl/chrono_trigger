@@ -70,9 +70,30 @@ class TestTrigger < Test::Unit::TestCase
           end
         end
       end #that are nil
+      
+      context "and a call to #monthly_on" do
+        setup do
+          @calendar_days = 15
+          @trigger.monthly_on @calendar_days
+        end
+        
+        should "set the trigger's cron entry's calendar_days" do
+          assert_equal [@calendar_days], @trigger.instance_variable_get(:@cron_entry).instance_variable_get(:@calendar_days)
+        end
+        
+        context "with mulitple #monthly_on values" do
+          setup do
+            @calendar_days_array = [@calendar_days, 16]
+            @trigger.monthly_on(@calendar_days_array)
+          end
+          
+          should "set the trigger's cron entry's calendar_days" do
+            assert_equal @calendar_days_array, @trigger.instance_variable_get(:@cron_entry).instance_variable_get(:@calendar_days)
+          end
+        end        
+      end
     end #and a call to #at with :hours and :minutes
     
-
     context "on a call to #every" do
       context "for 10 minutes" do
         setup do

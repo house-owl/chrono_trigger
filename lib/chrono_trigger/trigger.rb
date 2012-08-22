@@ -18,6 +18,12 @@ module ChronoTrigger
       cron_entry.set_days(days)
     end
     
+    #Specify what calendar day the task should run on; think monthly jobs.
+    #Values are 1-31
+    def monthly_on(*calendar_day)
+      cron_entry.set_calendar_days(calendar_day)
+    end
+    
     #Specify what hours and minutes the task should run at 
     #(e.g. :minute=>10, :hour=>3 or :minute=>[10,20,30], :hour=>[1,2,3])
     def at(options={})

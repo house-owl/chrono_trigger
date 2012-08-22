@@ -18,6 +18,8 @@ module ChronoTrigger
       :saturday   => 6
     }
     
+    CALENDAR_DAYS = *(1..31)
+    
     def set_hours(*args)
       args.compact!
       args.flatten!
@@ -37,6 +39,13 @@ module ChronoTrigger
       args.flatten!
       raise ChronoTrigger::ConfigurationException.new("Minutes must be less than 60") if args.any? {|minute| minute >= 60}      
       @minutes = args
+    end
+    
+    def set_calendar_days(*args)
+      args.compact!
+      args.flatten!
+      args.each {|calendar_day| raise ChronoTrigger::ConfigurationException.new("Calendar Day #{calendar_day} setting is invalid") if !CALENDAR_DAYS.include?(calendar_day)}
+      @calendar_days = args
     end 
 
     def matches?(datetime)
@@ -44,9 +53,17 @@ module ChronoTrigger
         raise ChronoTrigger::ConfigurationException.new("Days were specified for a CronEntry with no minutes specified") 
       end
       
+      if (@minutes.blank? || @hours.blank?) && !@calendar_days.blank?
+        raise ChronoTrigger::ConfigurationException.new("Calendar Days were specified for a CronEntry with no minutes and/or no hours specified")  
+      end
+
+      if !@days.blank? && !@calendar_days.blank?
+        raise ChronoTrigger::ConfigurationException.new("Calendar Days and Days were specified.  This is unsupported.")    
+      end
+      
       return false if !@minutes.blank? && !@minutes.include?(datetime.min)
       return false if !@hours.blank? && !@hours.include?(datetime.hour)
-      return false if !@days.blank? && !@days.include?(datetime.wday)   
+      return false if (!@days.blank? && !@days.include?(datetime.wday)) || (!@calendar_days.blank? && !@calendar_days.include?(datetime.day))
       return true
     end
 
