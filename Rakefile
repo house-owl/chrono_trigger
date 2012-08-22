@@ -40,10 +40,10 @@ begin
   Jeweler::Tasks.new do |s|
     s.name = "chrono_trigger"
     s.summary = "TODO"
-    s.email = "greg_fitz@yahoo.com"
+    s.email = "darful@gmail.com"
     s.homepage = ""
     s.description = "TODO"
-    s.authors = ["Greg Fitzgerald"]
+    s.authors = ["Jon Ciccone"]
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"

@@ -1,6 +1,7 @@
 = chrono_trigger
 
-* http://github.com/gregfitz23/chrono_trigger/tree/master
+This is a branch of http://github.com/gregfitz23/chrono_trigger/tree/master as it hasn't been updated in sometime.
+New code can be found at https://github.com/darful/chrono_trigger.
 
 == DESCRIPTION:
 
@@ -30,7 +31,7 @@ Other available options are:
 
 == INSTALL:
 
-* sudo gem install gregfitz23-chrono_trigger
+* sudo gem install chrono_trigger
 
 == LICENSE:
 

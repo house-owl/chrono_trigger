@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.version = "0.1.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Greg Fitzgerald"]
+  s.authors = ["Jon Ciccone"]
   s.date = "2012-08-22"
-  s.description = "TODO"
-  s.email = "greg_fitz@yahoo.com"
+  s.description = "Documentation update"
+  s.email = "darful@gmail.com"
   s.executables = ["chrono_trigger"]
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "TODO"
+  s.summary = "Documentation update"
   s.test_files = [
     "test/test_chrono_trigger.rb",
      "test/test_cron_entry.rb",
