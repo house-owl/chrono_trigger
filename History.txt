@@ -1,3 +1,7 @@
+== 0.2.0 2013-01-10
+* 1 enhancement
+  * Upgraded to support Ruby 1.9.x
+
 == 0.0.4 2009-04-09
 * 1 enhancement
   * Added chrono_trigger binary and supporting files

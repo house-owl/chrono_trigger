@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "chrono_trigger"
-  s.version = "0.1.7"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jon Ciccone"]
-  s.date = "2012-08-22"
-  s.description = "TODO"
+  s.date = "2013-01-10"
+  s.description = "c"
   s.email = "darful@gmail.com"
   s.executables = ["chrono_trigger"]
   s.extra_rdoc_files = [
@@ -44,11 +44,11 @@ Gem::Specification.new do |s|
      "test/test_trigger.rb",
      "test/triggers.rb"
   ]
-  s.homepage = ""
+  s.homepage = "https://rubygems.org/gems/chrono_trigger"
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "TODO"
+  s.summary = "A cron framework for defining cron tasks using a readable DSL."
   s.test_files = [
     "test/test_chrono_trigger.rb",
      "test/test_cron_entry.rb",
