@@ -14,12 +14,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "chrono_trigger"
-    s.summary = "TODO"
-    s.email = "darful@gmail.com"
-    s.homepage = ""
-    s.description = "TODO"
     s.authors = ["Jon Ciccone"]
+    s.date = "2013-01-10"
+    s.summary = "Rails cron jobs."
+    s.description = "This gem allows you to write, deploy, and maintain cron jobs withing the rails framework."
+    s.email = "darful@gmail.com"
+    s.homepage = "https://github.com/darful/chrono_trigger"
   end
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts "Jeweler not available. Install it with: gem install technicalpickles-jeweler -s http://gems.github.com"
 end

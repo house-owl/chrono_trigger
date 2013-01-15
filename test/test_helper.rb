@@ -1,9 +1,9 @@
+require 'rubygems'
+require 'chrono_trigger'
 require 'stringio'
 require 'test/unit'
-require File.dirname(__FILE__) + '/../lib/chrono_trigger'
 require 'shoulda'
-require 'mocha/setup'
-require 'active_support/all'
+require 'mocha'
 
 
 def quietly

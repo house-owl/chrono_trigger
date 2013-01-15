@@ -1,3 +1,7 @@
+== 0.2.1 2013-01-15
+* 1 patch
+  * Upgraded support for Ruby 1.8.6
+
 == 0.2.0 2013-01-10
 * 1 enhancement
   * Upgraded to support Ruby 1.9.x

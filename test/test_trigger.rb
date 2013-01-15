@@ -1,5 +1,4 @@
 class TestTrigger < Test::Unit::TestCase
-  
   context "A Trigger, @trigger," do
     setup do
       @trigger = ChronoTrigger::Trigger.new("test trigger")
@@ -155,7 +154,6 @@ class TestTrigger < Test::Unit::TestCase
       end
 
       should "raise an exception, which is caught, then retry the call method" do
-        require "active_record"
         ActiveRecord::Base.stubs(:connection).returns(mock({:reconnect! => true}))
         assert_equal @value, @trigger.execute
       end

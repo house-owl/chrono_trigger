@@ -2,6 +2,7 @@ require File.join(File.dirname(__FILE__), 'process')
 require "logger"
 require 'optparse'
 require 'yaml'
+require 'fileutils'
 
 module ChronoTrigger
   class Runner

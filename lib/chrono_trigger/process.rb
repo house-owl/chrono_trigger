@@ -3,7 +3,7 @@ module ChronoTrigger
   class Process
 
     def run(options={})
-      @t = Thread.new do
+      @thread = Thread.new do
         setup(options)
         
         shell = ChronoTrigger::Shell.new
@@ -14,11 +14,11 @@ module ChronoTrigger
         end
       end
       
-      @t.join
+      @thread.join
     end
     
     def stop
-      @t.exit
+      @thread.exit
     end
     
     private
@@ -27,7 +27,7 @@ module ChronoTrigger
         ENV['RAILS_ENV'] = options[:env] || "development"
         
         application_path = File.join(application_context, 'config', 'environment')
-        STDOUT.puts "Loading application environment at #{File.join(application_context, 'config', 'environment')} for '#{ENV['RAILS_ENV']}' enviroment."
+        STDOUT.puts "Loading application environment at #{File.join(application_context, 'config', 'environment')} for '#{ENV['RAILS_ENV']}' environment."
         require(application_path)              
       end
       
